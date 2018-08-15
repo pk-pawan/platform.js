@@ -1,9 +1,9 @@
-                <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<style type="text/css">
-		body {
+<title>Platform js</title>
+<style type="text/css">
+body {
   background:#ededed;
   padding:30px 0;
 }
@@ -51,9 +51,7 @@ article .card {
                 <legend>User Agent</legend>
 
                 <input id="ua-input" class="pure-input-2-3" type="text" placeholder="Custom UA">
-
-
-                <button id="parse-action" type="submit" class="pure-button pure-button-primary">Parse!</button>
+		<button id="parse-action" type="submit" class="pure-button pure-button-primary">Parse!</button>
             </fieldset>
         </form>
     </div>
@@ -71,17 +69,14 @@ function result (info) {
         'Layout: ' + info.layout + '\n' +
         'OS: ' + info.os + '\n' +
         'Description: ' + info.description + '\n';
-  		// 'Product: ' + info.product + '\n' +
-		// 'Manufacturer: ' + info.manufacturer + '\n'
+	// 'Product: ' + info.product + '\n' +
+	// 'Manufacturer: ' + info.manufacturer + '\n'
 }
 
 function parse (e) {
     var ua;
-
     e.preventDefault();
-
     ua = $ua.value;
-
     if (ua) {
         return result(platform.parse(ua));
     }
