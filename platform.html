@@ -1,0 +1,95 @@
+                <!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body {
+  background:#ededed;
+  padding:30px 0;
+}
+
+article header h1,
+article header h2 {
+  margin:0;
+  text-align:center;
+  font-weight:100;
+}
+
+article header h2 {
+  font-size:120%;
+  margin:5px 0;
+  opacity:.2;
+}
+
+article .card {
+  background:#fff;
+  box-shadow:0 0 20px 0 rgba(0,0,0,.1);
+  margin:50px auto;
+  padding:50px;
+  width:40%;
+}
+	</style>
+</head>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.4/platform.js"></script>
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+
+<article>
+    <header>
+        <h1>platform.js</h1>
+    </header>
+  
+    <div class="card">
+        <pre class="results">
+          <code id="platform"></code>
+        </pre>
+      
+        <form class="pure-form">
+            <fieldset>
+                <legend>User Agent</legend>
+
+                <input id="ua-input" class="pure-input-2-3" type="text" placeholder="Custom UA">
+
+
+                <button id="parse-action" type="submit" class="pure-button pure-button-primary">Parse!</button>
+            </fieldset>
+        </form>
+    </div>
+  
+</article>
+<script type="text/javascript">
+	var $platform = document.querySelector('#platform');
+var $ua = document.querySelector('#ua-input');
+var $button = document.querySelector('#parse-action');
+
+function result (info) {
+    $platform.innerHTML = '\n' +
+        'Name: ' + info.name + '\n' +
+        'Version: ' + info.version + '\n' +
+        'Layout: ' + info.layout + '\n' +
+        'OS: ' + info.os + '\n' +
+        'Description: ' + info.description + '\n';
+  		// 'Product: ' + info.product + '\n' +
+		// 'Manufacturer: ' + info.manufacturer + '\n'
+}
+
+function parse (e) {
+    var ua;
+
+    e.preventDefault();
+
+    ua = $ua.value;
+
+    if (ua) {
+        return result(platform.parse(ua));
+    }
+}
+
+$button.addEventListener('click', parse);
+
+result(platform);
+</script>
+</body>
+</html>
